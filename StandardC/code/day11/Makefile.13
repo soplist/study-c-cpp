@@ -1,0 +1,8 @@
+13opr:13opr.o readInt.o readInt.h
+	gcc 13opr.o readInt.o -o 13opr
+13opr.o:13opr.c readInt.h
+	gcc -c 13opr.c
+readInt.o:readInt.c readInt.h
+	gcc -c readInt.c
+clean:
+	rm *.o

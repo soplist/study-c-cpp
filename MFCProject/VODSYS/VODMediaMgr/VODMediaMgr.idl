@@ -1,0 +1,20 @@
+// VODMediaMgr.idl : IDL source for VODMediaMgr.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (VODMediaMgr.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(DE372C23-94E9-4F70-A4B4-995119B35E91),
+	version(1.0),
+	helpstring("VODMediaMgr 1.0 Type Library")
+]
+library VODMEDIAMGRLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+};

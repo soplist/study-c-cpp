@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+//生物, 人族, 兽族, 不死, 暗夜, 步兵
+/*
+human is a creature
+orc is a creature
+footman is a human
+*/
+//生物类
+class CRE{
+	int HP;//生命值
+	int DEF;//防御
+	int ACT;//攻击
+public:
+	CRE(int h=100, int d=100, int a=100)
+		:HP(h),DEF(d),ACT(a){
+		cout<<"CRE(i,i,i), "<<this<<endl;
+	}
+	~CRE(){cout<<"~CRE(), "<<this<<endl;}
+	int getHP(){return HP;}
+	void setHP(int HP){this->HP=HP;}
+	int getDEF(){return DEF;}
+	int getACT(){return ACT;}	
+	void move(){
+		cout<<"CRE moving moving"<<endl;
+	}	
+	void attack(){
+		cout<<"CRE attttacccck.."<<endl;
+	}
+};
+class Human : public CRE{
+public:
+	Human(int h=100, int d=100, int a=100)
+	:CRE(h, d, a){
+		cout<<"Human(), "<<this<<endl;
+	}
+	~Human(){
+		cout<<"~Human(), "<<this<<endl;
+	}
+};
+class Peasant : public Human{
+public:
+	Peasant(int h=50, int d=20, int a=10)
+	:Human(h, d, a){
+		cout<<"work work.. ,"<<this<< endl;
+	}	
+	~Peasant(){
+		cout<<"OH,I'll dead."<<this<<endl;
+	}
+	//名字隐藏,函数名和父类中的相同
+	void move(){
+		cout << "Peasant move" << endl;
+	}
+	//名字隐藏
+	void attack(string name){
+		cout << "Peasant attacked "
+			<< name << endl;
+	}
+	void work(){
+		cout<<"More Work..."<<endl;
+	}
+};
+
+int main()
+{
+	Human h;
+	h.move();
+	h.attack();	
+	cout << h.getHP() << endl;
+	cout << "-------------" << endl;
+	Peasant p1;
+	p1.move();
+	p1.attack("MK");
+	p1.Human::attack();
+	p1.work();	
+	p1.Human::move();//调用父类中继承来的
+	cout << "-------------" << endl;
+}
+

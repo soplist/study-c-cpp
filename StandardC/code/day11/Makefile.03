@@ -1,0 +1,8 @@
+sum:03sum.o readInt.o
+	gcc 03sum.o readInt.o -o 03sum
+03sum.o:03sum.c
+	gcc -c 03sum.c
+readInt.o:readInt.c
+	gcc -c readInt.c
+clean:
+	rm *.o

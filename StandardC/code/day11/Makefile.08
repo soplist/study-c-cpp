@@ -1,0 +1,8 @@
+square:08square.o readInt.o readInt.h
+	gcc 08square.o readInt.o -o 08square
+08square.o:08square.c readInt.h
+	gcc -c 08square.c
+readInt.o:readInt.c readInt.h
+	gcc -c readInt.c
+clean:
+	rm *.o

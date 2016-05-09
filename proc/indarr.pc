@@ -1,0 +1,20 @@
+#include <stdio.h>
+exec sql include sqlca;
+int main(){
+    exec sql begin declare section;
+        char  userpwd[30]="openlab/open123";
+        char  names[50][25];
+        int   mids[50];
+        short indmids[50];        
+    exec sql end   declare section;
+    exec sql connect:userpwd;
+    exec sql select first_name,manager_id 
+    into :names,:mids:indmids from s_emp;
+    int  i=0;
+    for(i=0;i<sqlca.sqlerrd[2];i++){
+        printf("%s:%d:%hd\n",names[i],
+        mids[i],indmids[i]);
+    }
+    exec sql commit work release;
+}
+/*include='/usr/lib/gcc-lib/i386-redhat-linux7/2.96/include' */ 

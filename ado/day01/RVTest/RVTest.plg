@@ -1,0 +1,44 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: RVTest - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/RVTest.res" /d "_DEBUG" /d "_AFXDLL" "F:\ADO\day01\day01\RVTest\RVTest.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP401.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/RVTest.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"F:\ADO\day01\day01\RVTest\RVTest.cpp"
+"F:\ADO\day01\day01\RVTest\RVTestView.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP401.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP402.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/RVTest.pdb" /debug /machine:I386 /out:"Debug/RVTest.exe" /pdbtype:sept 
+.\Debug\RVTest.obj
+.\Debug\StdAfx.obj
+.\Debug\MainFrm.obj
+.\Debug\RVTestDoc.obj
+.\Debug\RVTestView.obj
+.\Debug\RVTestSet.obj
+.\Debug\RVTest.res
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP402.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+RVTestView.cpp
+Generating Code...
+Skipping... (no relevant changes detected)
+RVTest.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+RVTest.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

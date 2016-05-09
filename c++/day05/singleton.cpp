@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+//Example类是单例的,只能创建一个对象出来
+class Example{
+	int x;
+	Example(){}//构造函数私有，这样就不能构造对象了，
+	static Example e;//直接构造出一个对象来
+	Example(const Example&){}//把拷贝构造也私有
+public:
+	static Example& getInstance(){
+		return e;	//每次都返回同一个对象
+	}		
+};
+Example Example::e;//分配空间  前一个Example 是类名，后一个Example 是类型
+int main()
+{
+	Example& e1 = Example::getInstance();//通过类名::调用   Example::getInstance()，返回e 把e1引用到e上
+
+	Example& e2 = Example::getInstance();
+	cout << &e1 << "," << &e2 << endl;
+}
+

@@ -1,0 +1,8 @@
+mul:07mul.o readInt.o readInt.h
+	gcc 07mul.o readInt.o -o 07mul
+07mul.o:07mul.c readInt.h
+	gcc -c 07mul.c
+readInt.o:readInt.c readInt.h
+	gcc -c readInt.c
+clean:
+	rm *.o

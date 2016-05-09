@@ -1,0 +1,8 @@
+card:07card.o compare.o compare.h
+	gcc 07card.o compare.o -o 07card
+07card.o:07card.c compare.h
+	gcc -c 07card.c
+compare.o:compare.c compare.h
+	gcc -c compare.c
+clean:
+	rm *.o

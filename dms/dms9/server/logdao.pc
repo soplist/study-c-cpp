@@ -1,0 +1,33 @@
+#include "logdao.h"     
+#include <stdio.h>
+#include <string.h>
+exec sql include sqlca;    
+exec sql begin declare section;
+    char  userp[30];
+    struct {
+        char  logname[32];
+        int   pid;
+        int   logintime;
+        int   logouttime;
+        int   durations;
+        char  logip[257];
+        /*统计每台服务器的信息*/
+        char  labip[20];
+    }tlog;
+exec sql end   declare section; 
+void LogDao::connect(char *userpwd){
+    sprintf(userp,userpwd);
+    exec sql  connect:userp;
+}
+void LogDao::saveData(MatchedLogRec mlog){
+    memcpy(&tlog,&mlog,sizeof mlog);
+    exec sql insert into testlog 
+    values(:tlog); 
+}
+void LogDao::commit(){
+    exec sql commit;
+}
+void LogDao::disConnect(){
+    exec sql commit work release;
+}
+

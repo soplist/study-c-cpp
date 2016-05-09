@@ -1,0 +1,18 @@
+#include <stdio.h>
+exec sql include sqlca;
+exec sql include oraca;
+exec oracle option(oraca=yes);
+int main(){
+    oraca.orastxtf=3;
+    exec sql begin declare section;
+        char  userpwd[30]="openlab/open123";
+        char  var_name[30];
+        int   id=1;
+    exec sql end   declare section;
+    exec sql connect:userpwd;
+    exec sql select first_name into :var_name
+    from s_emp where id=:id;
+    printf("%s\n",oraca.orastxt.orastxtc);
+    exec sql commit work release;
+}
+/*include='/usr/lib/gcc-lib/i386-redhat-linux7/2.96/include' */ 

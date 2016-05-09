@@ -1,0 +1,31 @@
+//类的定义 也就是实现
+#include <iostream>
+#include <ctime>
+#include <iomanip>
+#include "time.h"
+using namespace std;
+Time::Time(int h, int m, int s)
+	:h(h),m(m),s(s) { }	
+void Time::dida(){
+	s++;
+	if(s==60){ s=0; m++; }	
+	if(m==60){ m=0; h++; }
+	if(h==24){ h=0;}
+}
+void Time::show(){
+	cout<<setfill('0');
+	cout<<setw(2)<<h<<":"<<setw(2)
+	<<m<<":"<<setw(2)<<s<<flush<<"\r";
+}
+void Time::run(){
+	while(1){
+		show();
+		dida();
+		time_t cur = time(0);
+		while(time(0)==cur);		
+	}
+}
+//记住要在函数名前面加 类名::   ,不能在返回值前面
+// g++ -c 编译 生成  .o文件
+//g++ .c 文件  编译连接
+//  g++ .o  .o 连接文件，形成一个可以执行的程序

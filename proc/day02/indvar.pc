@@ -1,0 +1,16 @@
+#include <stdio.h>
+exec sql include sqlca;
+int main(){
+    exec sql begin declare section;
+        char  userpwd[30]="openlab/open123";
+        /*定义一个宿主变量*/
+        int    mid;
+        /*定义指示mid的赋值状态的指示变量*/
+        short   indmid;      
+    exec sql end   declare section;
+    exec sql connect:userpwd;
+    exec sql select manager_id into :mid:indmid   from s_emp where id=1;
+    printf("%hd\n",indmid);  
+    exec sql commit work release;
+}
+/*include='/usr/lib/gcc-lib/i386-redhat-linux7/2.96/include' */ 

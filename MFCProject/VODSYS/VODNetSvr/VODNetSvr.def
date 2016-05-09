@@ -1,0 +1,7 @@
+; VODNetSvr.def : Declares the module parameters for the DLL.
+
+LIBRARY      "VODNetSvr"
+DESCRIPTION  'VODNetSvr Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here

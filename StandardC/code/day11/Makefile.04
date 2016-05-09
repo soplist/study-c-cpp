@@ -1,0 +1,8 @@
+guess:readInt.o 04guess.o readInt.h
+	gcc readInt.o 04guess.o -o 04guess
+readInt.o:readInt.c readInt.h
+	gcc -c readInt.c
+04guess.o:04guess.c readInt.h
+	gcc -c 04guess.c
+clean:
+	rm *.o

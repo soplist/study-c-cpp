@@ -1,0 +1,8 @@
+upper:09upper.o readInt.o readInt.h
+	gcc 09upper.o readInt.o -o 09upper
+09upper.o:09upper.c readInt.h
+	gcc -c 09upper.c
+readInt.o:readInt.c readInt.h
+	gcc -c readInt.c
+clean:
+	rm *.o

@@ -1,0 +1,8 @@
+15con:15con.o readInt.o readInt.h
+	gcc 15con.o readInt.o -o 15con
+15con.o:15con.c readInt.h
+	gcc -c 15con.c
+readInt.o:readInt.c readInt.h
+	gcc -c readInt.c
+clean:
+	rm *.o

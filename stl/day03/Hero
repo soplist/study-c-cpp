@@ -1,0 +1,24 @@
+#ifndef HERO_H
+#define HERO_H
+#include <string>
+#include <cstdio>
+using namespace std;
+class Hero{
+	string name;
+	int power;
+public:
+	Hero(string name, int power)
+		:name(name),power(power){}
+	string toString()const{
+		char buf[30] = {};
+		sprintf(buf, "%s,%d",
+			name.c_str(), power);
+		return buf;
+	}
+	friend bool operator<(
+		const Hero&h1, const Hero&h2){
+		return h1.power<h2.power;
+	}
+};
+#endif
+

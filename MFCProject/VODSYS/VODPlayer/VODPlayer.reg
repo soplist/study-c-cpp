@@ -1,0 +1,13 @@
+REGEDIT
+; This .REG file may be used by your SETUP program.
+;   If a SETUP program is not available, the entries below will be
+;   registered in your InitInstance automatically with a call to
+;   CWinApp::RegisterShellFileTypes and COleObjectFactory::UpdateRegistryAll.
+
+
+HKEY_CLASSES_ROOT\VODPlayer.Document = VODPla Document
+HKEY_CLASSES_ROOT\VODPlayer.Document\CLSID = {0AD8EC78-8C87-433B-A4F9-53D97F54FEE0}
+
+HKEY_CLASSES_ROOT\CLSID\{0AD8EC78-8C87-433B-A4F9-53D97F54FEE0} = VODPla Document
+HKEY_CLASSES_ROOT\CLSID\{0AD8EC78-8C87-433B-A4F9-53D97F54FEE0}\ProgId = VODPlayer.Document
+HKEY_CLASSES_ROOT\CLSID\{0AD8EC78-8C87-433B-A4F9-53D97F54FEE0}\LocalServer32 = VODPLAYER.EXE

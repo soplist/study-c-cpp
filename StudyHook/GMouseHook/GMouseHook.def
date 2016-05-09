@@ -1,0 +1,9 @@
+; GMouseHook.def : Declares the module parameters for the DLL.
+
+LIBRARY      "GMouseHook"
+DESCRIPTION  'GMouseHook Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+SECTIONS
+ mydata READ WRITE SHARED 

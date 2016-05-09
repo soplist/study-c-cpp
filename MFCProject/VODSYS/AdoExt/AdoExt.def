@@ -1,0 +1,7 @@
+; AdoExt.def : Declares the module parameters for the DLL.
+
+LIBRARY      "AdoExt"
+DESCRIPTION  'AdoExt Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here

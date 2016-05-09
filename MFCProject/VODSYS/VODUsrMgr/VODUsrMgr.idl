@@ -1,0 +1,20 @@
+// VODUsrMgr.idl : IDL source for VODUsrMgr.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (VODUsrMgr.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(B4D639F8-C9CC-4AF4-AF4A-362E7D13C674),
+	version(1.0),
+	helpstring("VODUsrMgr 1.0 Type Library")
+]
+library VODUSRMGRLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+};

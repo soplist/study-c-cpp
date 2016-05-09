@@ -1,0 +1,19 @@
+#include <stdio.h>
+exec sql include sqlca;
+int main(){
+    exec sql begin declare section;
+        char  userpwd[30]="openlab/open123";
+        int   var_x=9527;
+        int   var_y=9528;    
+        int   var_res;    
+    exec sql end   declare section;
+    exec sql connect:userpwd;
+    exec sql execute
+        begin
+            :var_res:=getmin(:var_x,:var_y);
+        end;
+    end-exec;
+    printf("var_res:%d\n",var_res);
+    exec sql commit work release;
+}
+/*include='/usr/lib/gcc-lib/i386-redhat-linux7/2.96/include' */ 

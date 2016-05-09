@@ -1,0 +1,28 @@
+#include <stdio.h>
+exec sql include sqlca;
+int main(){
+    exec sql begin declare section;
+        char userpwd[30]="openlab/open123";
+        struct emp{
+            int id;
+            char name[30];
+            double salary; 
+        };
+        struct emp datas[50];
+    exec sql end   declare section;
+    exec sql connect:userpwd;
+    exec sql select id,first_name,salary
+    into :datas from  s_emp;
+    printf("%d\n",sqlca.sqlerrd[2]);
+    /*
+    exec sql  insert into testemp  values(:datas);*/
+    int  i=0;
+    int  pcount=sqlca.sqlerrd[2]; 
+    for(i=10;i<pcount;i++){
+         exec sql insert into  testemp 
+         values(:datas[i]);
+    }
+    exec sql commit;
+    exec sql commit work release;
+}
+

@@ -1,0 +1,14 @@
+#include <stdio.h>
+exec sql include sqlca;
+
+int main(){
+    exec sql begin declare section;
+        char userpwd[30]="openlab/open123";
+        char sqlstr[100];
+    exec sql end   declare section;
+    exec sql connect:userpwd;
+    sprintf(sqlstr,"create  table testdsql (id  number,name varchar2(30))");
+    exec sql execute immediate :sqlstr;
+    exec sql commit work release;
+}
+

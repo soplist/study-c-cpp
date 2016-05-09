@@ -1,0 +1,21 @@
+#include <stdio.h>
+exec sql include sqlca;
+
+int main(){
+    exec sql begin declare section;
+        char userpwd[30]="openlab/open123";
+        int  id;
+        char name[30];
+    exec sql end   declare section;
+    exec sql connect:userpwd;
+    exec sql declare myempcursor cursor for
+    select id,first_name from s_emp;
+    exec sql open myempcursor;
+    exec sql fetch myempcursor into :id,:name;
+    printf("%d:%s\n",id,name); 
+    exec sql fetch myempcursor into :id,:name;
+    printf("%d:%s\n",id,name); 
+    exec sql close myempcursor;
+    exec sql commit work release;
+}
+

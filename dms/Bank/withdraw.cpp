@@ -1,0 +1,51 @@
+#include "withdraw.h"
+#include "ui_withdraw.h"
+#include "account.h"
+#include <QMessageBox>
+#include "accountdao.h"
+#include <QPainter>
+WithDraw::WithDraw(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::WithDraw)
+{
+    ui->setupUi(this);
+    connect(ui->withdraw,SIGNAL(clicked()),
+            this,SLOT(changeAccount()));
+    connect(ui->cancel,SIGNAL(clicked()),
+            this,SLOT(close()));
+}
+
+WithDraw::~WithDraw()
+{
+    delete ui;
+}
+void  WithDraw::paintEvent(QPaintEvent *e){
+    QPainter qp(this);
+    QImage  img;
+    img.load(":/bank.bmp");
+    qp.drawImage(90,3,img);
+}
+void  WithDraw::changeAccount(){
+    Account a(ui->wname->text(),ui->wid->text(),ui->wpasswd->text(),ui->wmoney->text().toDouble());
+    if(a.getAccountMoney()<=0){
+         QMessageBox msg;
+         msg.setText("withdraw  money is invalid!");
+         msg.exec();
+         return;
+    }
+
+    AccountDao  adao;
+    bool cflag=adao.connectDb("QMYSQL","testdb","127.0.0.1",
+                                   3306,"root","");
+   Account temp=adao.getAccountByNameAndIdAndPasswd(a);
+    if(a.getAccountMoney()>temp.getAccountMoney()){
+         QMessageBox msg;
+         msg.setText("you have not enough money!");
+         msg.exec();
+         return;
+    }
+    if(cflag){
+    adao.withdrawAccount(a);
+    this->close();
+    }
+}

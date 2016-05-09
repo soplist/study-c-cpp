@@ -1,0 +1,42 @@
+// VODPlayer.odl : type library source for VODPlayer.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (VODPlayer.tlb).
+
+[ uuid(B151625C-0525-4F7E-B763-0A1E271CDD9E), version(1.0) ]
+library VODPlayer
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+
+	//  Primary dispatch interface for CVODPlayerDoc
+	
+	[ uuid(C074A565-A3A6-4D2D-A4FD-AAAADA79D18D) ]
+	dispinterface IVODPlayer
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CVODPlayerDoc)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CVODPlayerDoc)
+			//}}AFX_ODL_METHOD
+
+	};
+
+	//  Class information for CVODPlayerDoc
+	
+	[ uuid(0AD8EC78-8C87-433B-A4F9-53D97F54FEE0) ]
+	coclass Document
+	{
+		[default] dispinterface IVODPlayer;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

@@ -1,0 +1,4 @@
+DAO(data access objects)模式
+1、一个DAO接口
+2、一个DAO接口的实现类
+3、数据传递对象(值对象)

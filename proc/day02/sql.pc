@@ -1,0 +1,20 @@
+#include <stdio.h>
+exec sql include sqlca;
+int main(){
+    exec sql begin declare section;
+        char  userpwd[30]="openlab/open123";
+        int  id=100;
+        char name[30]="test";        
+    exec sql end   declare section;
+    exec sql connect:userpwd;
+    /*ddl*/
+    exec sql create table testsql(id number,
+    name  varchar2(30));
+    /*dml*/
+    exec sql insert into testsql values(:id,:name);
+    /*ÊÂÎñ¿ØÖÆ*/
+    exec sql commit; 
+    exec sql commit work release;
+}
+
+/*include='/usr/lib/gcc-lib/i386-redhat-linux7/2.96/include' */ 

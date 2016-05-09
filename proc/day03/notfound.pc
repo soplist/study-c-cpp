@@ -1,0 +1,23 @@
+#include <stdio.h>
+exec sql include sqlca;
+void   processNotFound(){
+    printf("NOTFOUND:%s\n",
+    sqlca.sqlerrm.sqlerrmc);
+}
+void   processSqlError(){
+    printf("SQLERROR:%s\n",
+    sqlca.sqlerrm.sqlerrmc);
+}
+int main(){
+    exec sql  begin declare section;
+        char userpwd[30]="openlab/open123";
+        char var_name[30];
+    exec sql  end   declare section;
+    exec sql  whenever notfound do processNotFound();
+    exec sql  whenever sqlerror do processSqlError();
+    exec sql connect:userpwd;
+    exec sql select first_name into :var_name
+    from s_emp where id=-1;
+    exec sql commit work release;
+}
+
